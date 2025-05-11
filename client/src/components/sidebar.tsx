@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import ProgressStats from "@/components/progress-stats";
 import { Stats, Template, TaskFilter } from "@/types";
 import { templates } from "@/data/templates";
@@ -89,12 +91,16 @@ const Sidebar = ({
           </div>
         </div>
         
+        <div className="flex space-x-2 mb-2">
+          <ThemeSwitcher className="flex-1 justify-center" />
+          <Button variant="outline" className="flex-1" onClick={onExportMethodology}>
+            <Download className="h-4 w-4 mr-1" /> Export
+          </Button>
+        </div>
+        
         <div className="flex space-x-2">
           <Button className="flex-1" onClick={onSaveMethodology}>
             <Save className="h-4 w-4 mr-1" /> Save
-          </Button>
-          <Button variant="outline" className="flex-1" onClick={onExportMethodology}>
-            <Download className="h-4 w-4 mr-1" /> Export
           </Button>
           <Button variant="destructive" className="flex-1" onClick={onResetChecklist}>
             <RefreshCw className="h-4 w-4 mr-1" /> Reset
@@ -160,6 +166,11 @@ const Sidebar = ({
 
       <div className="mb-6">
         <ProgressStats stats={stats} />
+      </div>
+
+      <div className="mb-6">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Appearance</h2>
+        <ThemeSwitcher className="w-full justify-start mb-2" />
       </div>
 
       <div className="mt-auto space-y-2">

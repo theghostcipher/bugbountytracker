@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* Dark theme (default) */
+:root, .dark {
   --background: 222 47% 11%;  /* #0F172A */
   --foreground: 210 40% 98%;  /* #F8FAFC */
   --card: 217 33% 17%;        /* #1E293B */
@@ -43,6 +44,83 @@
   --warning: 35 92% 50%;      /* #F59E0B */
 }
 
+/* Light theme */
+.light {
+  --background: 0 0% 100%;    /* #FFFFFF */
+  --foreground: 222 47% 11%;  /* #0F172A */
+  --card: 0 0% 98%;           /* #FAFAFA */
+  --card-foreground: 222 47% 11%;  /* #0F172A */
+  --popover: 0 0% 100%;       /* #FFFFFF */
+  --popover-foreground: 222 47% 11%;  /* #0F172A */
+  --primary: 243 75% 59%;     /* #4F46E5 */
+  --primary-foreground: 0 0% 100%;    /* #FFFFFF */
+  --secondary: 210 20% 92%;   /* #E2E8F0 */
+  --secondary-foreground: 222 47% 11%;  /* #0F172A */
+  --muted: 210 20% 92%;       /* #E2E8F0 */
+  --muted-foreground: 215 16% 47%;     /* #64748B */
+  --accent: 210 20% 92%;      /* #E2E8F0 */
+  --accent-foreground: 222 47% 11%;   /* #0F172A */
+  --destructive: 0 84% 60%;     /* #EF4444 */
+  --destructive-foreground: 0 0% 100%;  /* #FFFFFF */
+  --border: 214 32% 91%;       /* #E2E8F0 */
+  --input: 214 32% 91%;       /* #E2E8F0 */
+  --ring: 243 75% 59%;        /* #4F46E5 */
+
+  /* Additional custom colors for light theme */
+  --sidebar-background: 0 0% 98%;      /* #FAFAFA */
+  --sidebar-foreground: 222 47% 11%;   /* #0F172A */
+  --sidebar-primary: 243 75% 59%;      /* #4F46E5 */
+  --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --sidebar-accent: 210 20% 92%;       /* #E2E8F0 */
+  --sidebar-accent-foreground: 222 47% 11%;  /* #0F172A */
+  --sidebar-border: 214 32% 91%;       /* #E2E8F0 */
+  --sidebar-ring: 243 75% 59%;         /* #4F46E5 */
+
+  --textColor-light: 222 47% 11%;      /* #0F172A */
+  --textColor-medium: 215 25% 27%;     /* #334155 */
+  --textColor-muted: 215 16% 47%;      /* #64748B */
+}
+
+/* BIOS theme */
+.bios {
+  --background: 215 100% 20%;  /* #0047AB - Classic BIOS blue */
+  --foreground: 60 100% 90%;   /* #FFFFE0 - Lighter yellow */
+  --card: 215 100% 25%;        /* #0057CB - Slightly lighter blue */
+  --card-foreground: 60 100% 90%;  /* #FFFFE0 - Lighter yellow */
+  --popover: 215 100% 20%;     /* #0047AB - Classic BIOS blue */
+  --popover-foreground: 60 100% 90%;  /* #FFFFE0 - Lighter yellow */
+  --primary: 60 100% 50%;      /* #FFFF00 - Yellow */
+  --primary-foreground: 215 100% 20%;    /* #0047AB - Classic BIOS blue */
+  --secondary: 215 70% 30%;   /* #1A4FA3 - Medium blue */
+  --secondary-foreground: 60 100% 90%;  /* #FFFFE0 - Lighter yellow */
+  --muted: 215 70% 30%;       /* #1A4FA3 - Medium blue */
+  --muted-foreground: 60 80% 80%;     /* #FFE6AE - Muted yellow */
+  --accent: 215 70% 30%;      /* #1A4FA3 - Medium blue */
+  --accent-foreground: 60 100% 90%;   /* #FFFFE0 - Lighter yellow */
+  --destructive: 0 100% 50%;     /* #FF0000 - Bright red */
+  --destructive-foreground: 0 0% 100%;  /* #FFFFFF */
+  --border: 215 70% 35%;       /* #4671BE - Border blue */
+  --input: 215 70% 30%;       /* #1A4FA3 - Medium blue */
+  --ring: 60 100% 50%;        /* #FFFF00 - Yellow */
+
+  /* Additional custom colors for BIOS theme */
+  --sidebar-background: 215 100% 25%;  /* #0057CB - Slightly lighter blue */
+  --sidebar-foreground: 60 100% 90%;  /* #FFFFE0 - Lighter yellow */
+  --sidebar-primary: 60 100% 50%;     /* #FFFF00 - Yellow */
+  --sidebar-primary-foreground: 215 100% 20%; /* #0047AB - Classic BIOS blue */
+  --sidebar-accent: 215 70% 30%;      /* #1A4FA3 - Medium blue */
+  --sidebar-accent-foreground: 60 100% 90%; /* #FFFFE0 - Lighter yellow */
+  --sidebar-border: 215 70% 35%;      /* #4671BE - Border blue */
+  --sidebar-ring: 60 100% 50%;        /* #FFFF00 - Yellow */
+
+  --textColor-light: 60 100% 90%;     /* #FFFFE0 - Lighter yellow */
+  --textColor-medium: 60 90% 80%;    /* #FFE680 - Medium yellow */
+  --textColor-muted: 60 80% 70%;     /* #E6CF66 - Muted yellow */
+
+  --success: 120 100% 40%;     /* #00CC00 - Bright green */
+  --warning: 35 100% 50%;      /* #FF9900 - Orange */
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -50,6 +128,43 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-hidden;
+  }
+  
+  /* BIOS theme specific styles */
+  .bios body {
+    @apply font-mono;
+    cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAySURBVChTY/j//z8cpGZUoDCAbP7/HwzQJBkYsEmCJEESIACTZICAZ1QgCgME/mMAALvXJvqx9SdeAAAAAElFTkSuQmCC"), auto;
+  }
+  
+  .bios .card, 
+  .bios .bg-card,
+  .bios button,
+  .bios input,
+  .bios select {
+    @apply shadow-none border-2 rounded-none;
+  }
+  
+  .bios button {
+    text-shadow: 1px 1px 0px hsl(var(--primary-foreground));
+  }
+  
+  .bios h1, 
+  .bios h2, 
+  .bios h3, 
+  .bios h4 {
+    text-shadow: 1px 1px 0px hsl(var(--primary-foreground));
+  }
+  
+  .bios .bg-primary {
+    @apply font-bold;
+  }
+  
+  .bios .dialog-content {
+    @apply border-2 rounded-none;
+  }
+  
+  .bios .progress {
+    @apply border-2;
   }
 
   /* Custom checkbox styling */
