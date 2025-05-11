@@ -30,7 +30,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete }: TaskItemProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <label className="custom-checkbox flex items-start p-2 rounded-md hover:bg-secondary group-hover:bg-secondary">
-        <div className="relative shrink-0 mr-2">
+        <div className="relative shrink-0 mr-5 mt-1"> 
           <input
             type="checkbox"
             checked={task.completed}
