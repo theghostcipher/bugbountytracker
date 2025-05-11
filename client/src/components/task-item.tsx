@@ -30,15 +30,17 @@ const TaskItem = ({ task, onToggleComplete, onDelete }: TaskItemProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <label className="custom-checkbox flex items-start p-2 rounded-md hover:bg-secondary group-hover:bg-secondary">
-        <input
-          type="checkbox"
-          checked={task.completed}
-          onChange={handleChange}
-          className="absolute opacity-0 cursor-pointer h-0 w-0"
-        />
-        <span className="checkmark"></span>
-        <div className="flex-1">
-          <span className={`block text-textColor-light ${task.completed ? 'task-completed' : ''}`}>
+        <div className="relative shrink-0 mr-2">
+          <input
+            type="checkbox"
+            checked={task.completed}
+            onChange={handleChange}
+            className="absolute opacity-0 cursor-pointer h-0 w-0"
+          />
+          <span className="checkmark"></span>
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className={`block text-textColor-light ${task.completed ? 'task-completed' : ''} break-words`}>
             {task.title}
           </span>
           <span className="block text-xs text-muted-foreground mt-1">

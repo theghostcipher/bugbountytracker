@@ -117,7 +117,7 @@ const TaskList = ({
                   </Button>
                 </div>
 
-                <ul className="space-y-2">
+                <ul className="space-y-2 overflow-hidden">
                   {category.tasks.map((task) => (
                     <TaskItem
                       key={task.id}

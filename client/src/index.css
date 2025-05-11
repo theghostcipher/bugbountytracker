@@ -169,7 +169,7 @@
 
   /* Custom checkbox styling */
   .custom-checkbox {
-    @apply relative pl-8 cursor-pointer select-none;
+    @apply relative cursor-pointer select-none;
   }
 
   .custom-checkbox input {
