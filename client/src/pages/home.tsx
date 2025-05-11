@@ -3,12 +3,12 @@ import { useToast } from "@/hooks/use-toast";
 import { Category, Task, Template, TaskFilter, AppState } from "@/types";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { calculateStats, downloadJSON, generateId, stringToDate } from "@/lib/utils";
-import { getTemplateById } from "@/data/templates";
+import { getTemplateById, templates } from "@/data/templates";
 import Sidebar from "@/components/sidebar";
 import TaskList from "@/components/task-list";
 import AddCategoryDialog from "@/components/add-category-dialog";
 import { Button } from "@/components/ui/button";
-import { Plus, Clock } from "lucide-react";
+import { Plus, Clock, CheckSquare } from "lucide-react";
 
 const Home = () => {
   const { toast } = useToast();
@@ -168,6 +168,120 @@ const Home = () => {
     }
   };
   
+  // Handle resetting checkboxes (just completed tasks)
+  const handleResetCheckboxes = () => {
+    if (confirm("Are you sure you want to reset all checkboxes? This will uncheck all completed tasks.")) {
+      const resetCategories = appState.categories.map(category => {
+        const resetTasks = category.tasks.map(task => {
+          if (task.completed) {
+            return {
+              ...task,
+              completed: false
+            };
+          }
+          return task;
+        });
+        
+        return {
+          ...category,
+          tasks: resetTasks
+        };
+      });
+      
+      setAppState({
+        ...appState,
+        categories: resetCategories,
+        lastSaved: new Date().toISOString()
+      });
+      
+      toast({
+        title: "Checkboxes Reset",
+        description: "All completed tasks have been unchecked",
+      });
+    }
+  };
+  
+  // Handle renaming template
+  const handleRenameTemplate = (templateId: string, newName: string) => {
+    if (templateId === 'custom') {
+      const updatedTemplate = {
+        ...appState.currentTemplate,
+        name: newName
+      };
+      
+      setAppState({
+        ...appState,
+        currentTemplate: updatedTemplate,
+        lastSaved: new Date().toISOString()
+      });
+      
+      // Also update the template in local storage for persistence
+      const updatedTemplates = templates.map(t => {
+        if (t.id === 'custom') {
+          return {
+            ...t,
+            name: newName
+          };
+        }
+        return t;
+      });
+      
+      localStorage.setItem('bug-bounty-templates', JSON.stringify(updatedTemplates));
+    }
+  };
+  
+  // Handle importing methodology
+  const handleImportMethodology = (data: any) => {
+    try {
+      if (!data || !data.categories || !Array.isArray(data.categories)) {
+        throw new Error('Invalid import data format');
+      }
+      
+      // Map imported data to our data structure
+      const importedCategories = data.categories.map((category: any) => {
+        if (!category.id || !category.name || !category.tasks || !Array.isArray(category.tasks)) {
+          throw new Error('Invalid category format in import');
+        }
+        
+        // Ensure tasks have the proper format
+        const validTasks = category.tasks.map((task: any) => {
+          if (!task.id || !task.title) {
+            // Generate valid task if missing required fields
+            return {
+              id: generateId(),
+              title: task.title || 'Imported Task',
+              completed: !!task.completed,
+              createdAt: task.createdAt || new Date().toISOString()
+            };
+          }
+          return task;
+        });
+        
+        return {
+          id: category.id,
+          name: category.name,
+          icon: category.icon || 'folder',
+          tasks: validTasks,
+          expanded: true
+        };
+      });
+      
+      setAppState({
+        ...appState,
+        categories: importedCategories,
+        lastSaved: new Date().toISOString()
+      });
+      
+    } catch (error) {
+      console.error('Import error:', error);
+      toast({
+        title: "Import Error",
+        description: "The imported file has an invalid format",
+        variant: "destructive"
+      });
+    }
+  };
+  
   // Handle toggling category expansion
   const handleToggleCategory = (categoryId: string) => {
     const updatedCategories = appState.categories.map(category => {
@@ -322,6 +436,9 @@ const Home = () => {
         onExportMethodology={handleExportMethodology}
         onResetChecklist={handleResetChecklist}
         onAddCategory={() => setOpenDialog(true)}
+        onImportMethodology={handleImportMethodology}
+        onResetCheckboxes={handleResetCheckboxes}
+        onRenameTemplate={handleRenameTemplate}
       />
       
       {/* Main Content */}
@@ -339,6 +456,14 @@ const Home = () => {
                   <span className="text-xs">Last saved: {stringToDate(appState.lastSaved)}</span>
                 </div>
               )}
+              <Button 
+                onClick={handleResetCheckboxes}
+                variant="secondary"
+                size="sm"
+                className="hover:bg-secondary/80"
+              >
+                <CheckSquare className="h-4 w-4 mr-1" /> Reset Checkboxes
+              </Button>
               <Button 
                 onClick={() => setOpenDialog(true)}
                 className="bg-primary hover:bg-primary/80 text-white"
