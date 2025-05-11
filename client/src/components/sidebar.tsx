@@ -201,7 +201,7 @@ const Sidebar = ({
 
   // Desktop sidebar
   return (
-    <div className={`bg-card md:h-screen flex flex-col border-r border-border transition-all duration-300 ${isSidebarCollapsed ? 'md:w-16' : 'md:w-64'} w-full relative`}>
+    <div className={`bg-card md:h-screen flex flex-col border-r border-border transition-all duration-300 ${isSidebarCollapsed ? 'md:w-16' : 'md:w-64'} w-full relative overflow-hidden`}>
       <Button 
         variant="ghost" 
         size="icon" 
@@ -211,7 +211,7 @@ const Sidebar = ({
         {isSidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
       </Button>
       
-      <div className="p-4 flex flex-col h-full overflow-y-auto">
+      <div className="p-4 flex flex-col h-full overflow-y-auto overflow-x-hidden">
         <div className="flex items-center mb-6">
           <Bug className="text-primary h-6 w-6 mr-2 shrink-0" />
           {!isSidebarCollapsed && <h1 className="text-xl font-bold text-foreground">BugHunt Tracker</h1>}
@@ -293,7 +293,7 @@ const Sidebar = ({
           </>
         )}
 
-        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center overflow-y-auto py-2' : ''}`}>
+        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center overflow-y-auto overflow-x-hidden py-2' : ''}`}>
           {!isSidebarCollapsed ? (
             <>
               <Button 
