@@ -1,4 +1,4 @@
-# Your Tool Name
+# Bug Bounty Methodology To-Do List Web Application
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub Stars](https://img.shields.io/github/stars/your-username/your-repo-name)](https://github.com/your-username/your-repo-name) [![GitHub Issues](https://img.shields.io/github/issues/your-username/your-repo-name)](https://github.com/your-username/your-repo-name/issues) **A concise and engaging one-liner describing your tool and its primary function.**
 
@@ -53,22 +53,15 @@ Provide clear and step-by-step instructions on how to install your tool. This mi
     cd your-repo-name
     ```
 
-2.  **Install dependencies (if applicable, e.g., for a Node.js project):**
+2.  **Install dependencies:**
     ```bash
     npm install
-    # or
-    yarn install
+    # And
+    npm run build
     ```
 
-3.  **Follow any other installation steps specific to your tool.**
-
-## Usage
-
-Explain how to use your tool. Provide clear instructions and examples of common use cases.
-
-### Basic Usage
-
-Describe the fundamental way to run your tool and any essential commands or options.
-
-```bash
-your-tool-command [options] <arguments>
+3.  **Run.**
+    ```bash
+    npm start
+    ```
+    ## Now Your To-Do Web App Succesfully Running Localy On (http://localhost:5000)
