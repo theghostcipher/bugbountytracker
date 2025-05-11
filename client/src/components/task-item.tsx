@@ -30,7 +30,7 @@ const TaskItem = ({ task, onToggleComplete, onDelete }: TaskItemProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <label className="custom-checkbox flex items-start p-2 rounded-md hover:bg-secondary group-hover:bg-secondary">
-        <div className="relative shrink-0 mr-5 mt-1"> 
+        <div className="relative shrink-0 mr-10 mt-1">
           <input
             type="checkbox"
             checked={task.completed}
@@ -40,14 +40,18 @@ const TaskItem = ({ task, onToggleComplete, onDelete }: TaskItemProps) => {
           <span className="checkmark"></span>
         </div>
         <div className="flex-1 min-w-0">
-          <span className={`block text-textColor-light ${task.completed ? 'task-completed' : ''} break-words`}>
+          <span
+            className={`block text-textColor-light ${task.completed ? "task-completed" : ""} break-words`}
+          >
             {task.title}
           </span>
           <span className="block text-xs text-muted-foreground mt-1">
             Added: {formatDate(task.createdAt)}
           </span>
         </div>
-        <div className={`transition-opacity ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+        <div
+          className={`transition-opacity ${isHovered ? "opacity-100" : "opacity-0"}`}
+        >
           <button
             className="text-muted-foreground hover:text-destructive p-1"
             onClick={handleDelete}

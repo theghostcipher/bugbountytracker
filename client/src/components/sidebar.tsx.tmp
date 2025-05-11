@@ -222,18 +222,20 @@ const Sidebar = ({
             <div className="mb-6">
               <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Templates</h2>
               <div className="flex">
-                <Select value={currentTemplate.id} onValueChange={onTemplateChange} className="flex-1">
-                  <SelectTrigger className="bg-background text-foreground border-border">
-                    <SelectValue placeholder="Select template" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {templates.map(template => (
-                      <SelectItem key={template.id} value={template.id}>
-                        {template.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div className="flex-1">
+                  <Select value={currentTemplate.id} onValueChange={onTemplateChange}>
+                    <SelectTrigger className="bg-background text-foreground border-border">
+                      <SelectValue placeholder="Select template" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {templates.map(template => (
+                        <SelectItem key={template.id} value={template.id}>
+                          {template.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
                 {currentTemplate.id === "custom" && (
                   <Button 
                     variant="ghost" 
