@@ -37,20 +37,25 @@ This section guides users on how to get your tool up and running on their system
 
 ### Prerequisites
 
-List any software or dependencies that users need to have installed before they can use your tool. Include links to download them if necessary.
+List of software or dependencies that users need to have installed before they can use your tool. Include links to download them if necessary.
 
 * [Node.js](https://nodejs.org/) (version >= 16.0.0, for example)
 * [Git](https://git-scm.com/)
 * [Python](https://www.python.org/) (version >= 3.8, if applicable)
-* ...
 
+  ```bash
+  sudo apt update && sudo apt upgrade
+  sudo apt install nodejs
+  sudo apt install git
+  sudo apt install python
+  ```
 ### Installation
 
-Provide clear and step-by-step instructions on how to install your tool. This might involve cloning a repository, installing packages, or running an installation script.
+step-by-step instructions on how to install this web app.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone https://github.com/theghostcipher/bugbountytracker.git)
     cd your-repo-name
     ```
 
