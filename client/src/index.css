@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 11%;  /* #0F172A */
+  --foreground: 210 40% 98%;  /* #F8FAFC */
+  --card: 217 33% 17%;        /* #1E293B */
+  --card-foreground: 210 40% 98%;  /* #F8FAFC */
+  --popover: 222 47% 11%;     /* #0F172A */
+  --popover-foreground: 210 40% 98%;  /* #F8FAFC */
+  --primary: 243 80% 59%;     /* #4F46E5 */
+  --primary-foreground: 0 0% 100%;    /* #FFFFFF */
+  --secondary: 214 32% 26%;   /* #334155 */
+  --secondary-foreground: 210 40% 98%;  /* #F8FAFC */
+  --muted: 214 32% 26%;       /* #334155 */
+  --muted-foreground: 215 20% 65%;     /* #64748B */
+  --accent: 214 32% 26%;      /* #334155 */
+  --accent-foreground: 210 40% 98%;   /* #F8FAFC */
+  --destructive: 0 84% 60%;     /* #EF4444 */
+  --destructive-foreground: 0 0% 100%;  /* #FFFFFF */
+  --border: 214 32% 26%;       /* #334155 */
+  --input: 214 32% 26%;       /* #334155 */
+  --ring: 243 80% 59%;        /* #4F46E5 */
+
+  --radius: 0.5rem;
+
+  /* Additional custom colors */
+  --sidebar-background: 217 33% 17%;  /* #1E293B */
+  --sidebar-foreground: 210 40% 98%;  /* #F8FAFC */
+  --sidebar-primary: 243 80% 59%;     /* #4F46E5 */
+  --sidebar-primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --sidebar-accent: 214 32% 26%;      /* #334155 */
+  --sidebar-accent-foreground: 210 40% 98%; /* #F8FAFC */
+  --sidebar-border: 214 32% 26%;      /* #334155 */
+  --sidebar-ring: 243 80% 59%;        /* #4F46E5 */
+
+  --textColor-light: 210 40% 98%;     /* #F8FAFC */
+  --textColor-medium: 203 27% 84%;    /* #CBD5E1 */
+  --textColor-muted: 215 19% 53%;     /* #94A3B8 */
+
+  --success: 158 64% 39%;     /* #10B981 */
+  --warning: 35 92% 50%;      /* #F59E0B */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-hidden;
+  }
+
+  /* Custom checkbox styling */
+  .custom-checkbox {
+    @apply relative pl-8 cursor-pointer select-none;
+  }
+
+  .custom-checkbox input {
+    @apply absolute opacity-0 cursor-pointer h-0 w-0;
+  }
+
+  .checkmark {
+    @apply absolute top-0 left-0 h-5 w-5 border-2 border-primary rounded bg-transparent transition-all duration-200;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark {
+    @apply bg-primary;
+  }
+
+  .checkmark:after {
+    @apply content-[""] absolute hidden;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark:after {
+    @apply block;
+  }
+
+  .custom-checkbox .checkmark:after {
+    @apply left-[6px] top-[2px] w-[5px] h-[10px] border-r-2 border-b-2 border-white rotate-45;
+  }
+
+  /* Completed task styling */
+  .task-completed {
+    @apply line-through opacity-70;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-card rounded-md;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-md;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+
+  /* Keyboard shortcut tooltip */
+  .kbd {
+    @apply bg-secondary rounded px-1 font-mono text-xs;
+  }
+
+  /* Smooth transitions */
+  .transition-height {
+    @apply transition-all duration-300 overflow-hidden;
+  }
+}
