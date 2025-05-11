@@ -9,13 +9,6 @@
 * [Getting Started](#getting-started)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
-* [Usage](#usage)
-    * [Basic Usage](#basic-usage)
-    * [Examples](#examples)
-* [Configuration](#configuration)
-* [Contributing](#contributing)
-* [License](#license)
-* [Acknowledgments](#acknowledgments)
 
 ## About
 
@@ -23,14 +16,22 @@ A more detailed explanation of your tool. Expand on the one-liner and explain th
 
 ## Features
 
-A bulleted list highlighting the key features and functionalities of your tool. Be specific and emphasize the value each feature provides.
+A list highlighting the key features and functionalities of tool.
+  <h1 align="center">Themes</h1> 
+  
+  ![darktheme Screenshot](screenshots/dark.png)
+   
+  <h4 align= "center">Choose Between Dark And Light Theme</h4>
+   
+  ![lightheme Screenshot](screenshots/light.png)
 
-* Feature 1: Briefly describe the first key feature.
-* Feature 2: Briefly describe the second key feature.
-* ...
-* Feature n: Briefly describe the nth key feature.
+  <h4 align="left">( Users Can Select Multiple Of Methodology Templates And Creater Her Own, Users Also Import And Export  Methodology To-Do List as JSON )</h4>
+  <h1></h1>
 
-## Getting Started
+  <p></p>
+  <p></p>
+  
+  # Getting Started
 
 This section guides users on how to get your tool up and running on their system.
 
