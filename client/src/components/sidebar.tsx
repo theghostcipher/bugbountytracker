@@ -205,13 +205,13 @@ const Sidebar = ({
       <Button 
         variant="ghost" 
         size="icon" 
-        className="absolute -right-4 top-6 h-8 w-8 rounded-full bg-secondary hidden md:flex"
+        className="absolute -right-4 top-6 h-8 w-8 rounded-full bg-secondary hidden md:flex z-10"
         onClick={toggleSidebar}
       >
         {isSidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
       </Button>
       
-      <div className="p-4 flex flex-col h-full">
+      <div className="p-4 flex flex-col h-full overflow-y-auto">
         <div className="flex items-center mb-6">
           <Bug className="text-primary h-6 w-6 mr-2 shrink-0" />
           {!isSidebarCollapsed && <h1 className="text-xl font-bold text-foreground">BugHunt Tracker</h1>}
@@ -293,7 +293,7 @@ const Sidebar = ({
           </>
         )}
 
-        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center' : ''}`}>
+        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center overflow-y-auto py-2' : ''}`}>
           {!isSidebarCollapsed ? (
             <>
               <Button 
@@ -339,11 +339,11 @@ const Sidebar = ({
               </Button>
             </>
           ) : (
-            <>
-              <Button variant="ghost" size="icon" onClick={onSaveMethodology} title="Save Methodology">
+            <div className="flex flex-col space-y-3 w-full">
+              <Button variant="ghost" size="icon" onClick={onSaveMethodology} title="Save Methodology" className="flex justify-center">
                 <Save className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => importFileRef.current?.click()} title="Import">
+              <Button variant="ghost" size="icon" onClick={() => importFileRef.current?.click()} title="Import" className="flex justify-center">
                 <Upload className="h-5 w-5" />
                 <input 
                   type="file" 
@@ -353,16 +353,16 @@ const Sidebar = ({
                   onChange={handleImportFile}
                 />
               </Button>
-              <Button variant="ghost" size="icon" onClick={onExportMethodology} title="Export">
+              <Button variant="ghost" size="icon" onClick={onExportMethodology} title="Export" className="flex justify-center">
                 <Download className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={onResetCheckboxes} title="Reset Checkboxes">
+              <Button variant="ghost" size="icon" onClick={onResetCheckboxes} title="Reset Checkboxes" className="flex justify-center">
                 <CheckSquare className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-destructive" onClick={onResetChecklist} title="Reset Checklist">
+              <Button variant="ghost" size="icon" className="text-destructive flex justify-center" onClick={onResetChecklist} title="Reset Checklist">
                 <RefreshCw className="h-5 w-5" />
               </Button>
-            </>
+            </div>
           )}
         </div>
       </div>
