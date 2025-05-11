@@ -434,7 +434,6 @@ const Home = () => {
         onFilterChange={handleFilterChange}
         onSaveMethodology={handleSaveMethodology}
         onExportMethodology={handleExportMethodology}
-        onResetChecklist={handleResetChecklist}
         onAddCategory={() => setOpenDialog(true)}
         onImportMethodology={handleImportMethodology}
         onResetCheckboxes={handleResetCheckboxes}
@@ -484,7 +483,7 @@ const Home = () => {
           onToggleTaskComplete={handleToggleTaskComplete}
         />
         
-        {/* Add Task Button (Floating) */}
+        {/* Add Task Button (Floating)
         <Button
           className="fixed bottom-6 right-6 bg-primary hover:bg-primary/80 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
           onClick={() => {
@@ -498,7 +497,7 @@ const Home = () => {
           }}
         >
           <Plus className="h-6 w-6" />
-        </Button>
+        </Button> */}
       </div>
       
       {/* Add Category Dialog */}

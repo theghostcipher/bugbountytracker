@@ -33,7 +33,6 @@ interface SidebarProps {
   onFilterChange: (filter: TaskFilter) => void;
   onSaveMethodology: () => void;
   onExportMethodology: () => void;
-  onResetChecklist: () => void;
   onAddCategory: () => void;
   onImportMethodology?: (data: any) => void;
   onResetCheckboxes?: () => void;
@@ -48,7 +47,6 @@ const Sidebar = ({
   onFilterChange,
   onSaveMethodology,
   onExportMethodology,
-  onResetChecklist,
   onAddCategory,
   onImportMethodology = () => {},
   onResetCheckboxes = () => {},
@@ -191,9 +189,6 @@ const Sidebar = ({
           <Button variant="secondary" className="flex-1" onClick={onResetCheckboxes}>
             <CheckSquare className="h-4 w-4 mr-1" /> Reset Boxes
           </Button>
-          <Button variant="destructive" className="flex-1" onClick={onResetChecklist}>
-            <RefreshCw className="h-4 w-4 mr-1" /> Reset
-          </Button>
         </div>
       </div>
     );
@@ -201,7 +196,7 @@ const Sidebar = ({
 
   // Desktop sidebar
   return (
-    <div className={`bg-card md:h-screen flex flex-col border-r border-border transition-all duration-300 ${isSidebarCollapsed ? 'md:w-16' : 'md:w-64'} w-full relative overflow-hidden`}>
+    <div className={`bg-card md:h-screen flex flex-col border-r border-border transition-all duration-300 ${isSidebarCollapsed ? 'md:w-16' : 'md:w-64'} w-full relative`}>
       <Button 
         variant="ghost" 
         size="icon" 
@@ -211,7 +206,7 @@ const Sidebar = ({
         {isSidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
       </Button>
       
-      <div className="p-4 flex flex-col h-full overflow-y-auto overflow-x-hidden">
+      <div className="p-4 flex flex-col h-full overflow-y-auto">
         <div className="flex items-center mb-6">
           <Bug className="text-primary h-6 w-6 mr-2 shrink-0" />
           {!isSidebarCollapsed && <h1 className="text-xl font-bold text-foreground">BugHunt Tracker</h1>}
@@ -293,7 +288,7 @@ const Sidebar = ({
           </>
         )}
 
-        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center overflow-y-auto overflow-x-hidden py-2' : ''}`}>
+        <div className={`mt-auto space-y-2 ${isSidebarCollapsed ? 'flex flex-col items-center py-2' : ''}`}>
           {!isSidebarCollapsed ? (
             <>
               <Button 
@@ -330,13 +325,6 @@ const Sidebar = ({
               >
                 <CheckSquare className="mr-2 h-4 w-4" /> Reset Checkboxes
               </Button>
-              <Button 
-                variant="destructive" 
-                className="w-full"
-                onClick={onResetChecklist}
-              >
-                <RefreshCw className="mr-2 h-4 w-4" /> Reset Checklist
-              </Button>
             </>
           ) : (
             <div className="flex flex-col space-y-3 w-full">
@@ -358,9 +346,6 @@ const Sidebar = ({
               </Button>
               <Button variant="ghost" size="icon" onClick={onResetCheckboxes} title="Reset Checkboxes" className="flex justify-center">
                 <CheckSquare className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-destructive flex justify-center" onClick={onResetChecklist} title="Reset Checklist">
-                <RefreshCw className="h-5 w-5" />
               </Button>
             </div>
           )}
